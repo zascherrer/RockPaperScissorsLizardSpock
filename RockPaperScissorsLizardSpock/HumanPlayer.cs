@@ -17,9 +17,11 @@ namespace RockPaperScissorsLizardSpock
         }
 
         //methods
-        public override void ChooseGesture()
+        public override Gesture ChooseGesture()
         {
             bool choiceIsValid = false;
+            string userInput;
+            Gesture chosenGesture = new Rock();         //This is just a default to check for bugs; it should be overwritten
 
             while (!choiceIsValid)
             {
@@ -30,10 +32,36 @@ namespace RockPaperScissorsLizardSpock
                 Console.WriteLine(" 4. Lizard");
                 Console.WriteLine(" 5. Spock \n");
 
-                string userInput = Console.ReadLine();
+                userInput = Console.ReadLine();
                 choiceIsValid = ValidateGestureChoice(userInput);
+
+                if (choiceIsValid)
+                {
+                    switch (userInput)
+                    {
+                        case "1":
+                            chosenGesture = new Rock();
+                            break;
+                        case "2":
+                            chosenGesture = new Paper();
+                            break;
+                        case "3":
+                            chosenGesture = new Scissors();
+                            break;
+                        case "4":
+                            chosenGesture = new Lizard();
+                            break;
+                        case "5":
+                            chosenGesture = new Spock();
+                            break;
+                        default:
+                            chosenGesture = new Rock();
+                            break;
+                    }
+                }
             }
 
+            return chosenGesture;
         }
 
         public bool ValidateGestureChoice(string userInput)

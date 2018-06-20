@@ -33,15 +33,45 @@ namespace RockPaperScissorsLizardSpock
         {
             int playerOneWinCounter = 0;
             int playerTwoWinCounter = 0;
+            int tieCounter = 0;
             bool playerOneWins = false;
             bool playerTwoWins = false;
 
             while(!playerOneWins && !playerTwoWins)
             {
-                playerOne.PlayerTurn();
-                playerTwo.PlayerTurn();
-            }
+                Gesture playerOneChoice = playerOne.PlayerTurn();
+                Gesture playerTwoChoice = playerTwo.PlayerTurn();
 
+                int resultOfRound = gestureComparer.DetermineVictor(playerOneChoice, playerTwoChoice);
+
+                if(resultOfRound == 1)
+                {
+                    Console.WriteLine("Player one wins the round!");
+                    playerOneWinCounter++;
+                }
+                else if(resultOfRound == -1)
+                {
+                    Console.WriteLine("Player two wins the round!");
+                    playerTwoWinCounter++;
+                }
+                else
+                {
+                    tieCounter++;
+                }
+
+                if(playerOneWinCounter >= 2)
+                {
+                    Console.WriteLine("Player one wins the game!!");
+                    playerOneWins = true;
+                }
+
+                if(playerTwoWinCounter >= 2)
+                {
+                    Console.WriteLine("Player two wins the game!!");
+                    playerTwoWins = true;
+                }
+            }
+            Console.ReadLine();
         }
     }
 }

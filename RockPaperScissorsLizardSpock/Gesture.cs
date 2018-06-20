@@ -15,7 +15,7 @@ namespace RockPaperScissorsLizardSpock
         //constructor
         public Gesture()
         {
-
+            winsAgainstThese = new List<string>();
         }
 
         //methods

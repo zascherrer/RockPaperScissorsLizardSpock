@@ -18,15 +18,16 @@ namespace RockPaperScissorsLizardSpock
         }
 
         //methods
-        public virtual void ChooseGesture()
+        public virtual Gesture ChooseGesture()
         {
-
+            return new Rock();
         }
 
-        public void PlayerTurn()
+        public Gesture PlayerTurn()
         {
             Console.WriteLine("It's {0}'s turn to choose! \n\n", name);
-            ChooseGesture();
+            Gesture chosenGesture = ChooseGesture();
+            return chosenGesture;
         }
 
     }
