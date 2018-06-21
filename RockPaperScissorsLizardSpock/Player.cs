@@ -11,11 +11,15 @@ namespace RockPaperScissorsLizardSpock
         //variables
         public string name;
         public List<Gesture> gesturesAvailable;
+        public int score;
+        public bool winsGame;
 
         //constructor
         public Player()
         {
             name = "Default_Name";
+            score = 0;
+            winsGame = false;
             gesturesAvailable = new List<Gesture>();
             gesturesAvailable.Add(new Rock());
             gesturesAvailable.Add(new Paper());

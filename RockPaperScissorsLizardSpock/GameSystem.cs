@@ -9,7 +9,7 @@ namespace RockPaperScissorsLizardSpock
     class GameSystem
     {
         //variables
-        GestureComparer gestureComparer;
+        //GestureComparer gestureComparer;
         Player playerOne;
         Player playerTwo;
         bool playerTwoIsHuman;
@@ -19,7 +19,7 @@ namespace RockPaperScissorsLizardSpock
         {
             this.playerTwoIsHuman = playerTwoIsHuman;
 
-            gestureComparer = new GestureComparer();
+            //gestureComparer = new GestureComparer();
             Console.WriteLine("\n\nPlayer One,");
             playerOne = new HumanPlayer();
             if (playerTwoIsHuman)
@@ -36,13 +36,7 @@ namespace RockPaperScissorsLizardSpock
         //methods
         public void RunGame()
         {
-            int playerOneWinCounter = 0;
-            int playerTwoWinCounter = 0;
-            int tieCounter = 0;
-            bool playerOneWins = false;
-            bool playerTwoWins = false;
-
-            while(!playerOneWins && !playerTwoWins)
+            while(!playerOne.winsGame && !playerTwo.winsGame)
             {
                 Gesture playerOneChoice = playerOne.PlayerTurn();
                 if (playerTwoIsHuman)
@@ -55,37 +49,46 @@ namespace RockPaperScissorsLizardSpock
                     Console.Clear();
                 }
 
-                int resultOfRound = gestureComparer.DetermineVictor(playerOneChoice, playerTwoChoice);
-
-                if(resultOfRound == 1)
-                {
-                    Console.WriteLine("Player one wins the round!\n\n");
-                    playerOneWinCounter++;
-                }
-                else if(resultOfRound == -1)
-                {
-                    Console.WriteLine("Player two wins the round!\n\n");
-                    playerTwoWinCounter++;
-                }
-                else
-                {
-                    Console.WriteLine("The round was a tie!\n\n");
-                    tieCounter++;
-                }
-
-                if(playerOneWinCounter >= 2)
-                {
-                    Console.WriteLine("Player one wins the game!!");
-                    playerOneWins = true;
-                }
-
-                if(playerTwoWinCounter >= 2)
-                {
-                    Console.WriteLine("Player two wins the game!!");
-                    playerTwoWins = true;
-                }
+                RoundResults(playerOneChoice, playerTwoChoice);
+                CheckForVictory();
+                
             }
             Console.ReadLine();         //Just here to pause the console so the player can read
+        }
+
+        public void RoundResults(Gesture playerOneChoice, Gesture playerTwoChoice)
+        {
+            int resultOfRound = GestureComparer.DetermineVictor(playerOneChoice, playerTwoChoice);
+
+            if (resultOfRound == 1)
+            {
+                Console.WriteLine("{0} wins the round!\n\n", playerOne.name);
+                playerOne.score++;
+            }
+            else if (resultOfRound == -1)
+            {
+                Console.WriteLine("{0} wins the round!\n\n", playerTwo.name);
+                playerTwo.score++;
+            }
+            else
+            {
+                Console.WriteLine("The round was a tie!\n\n");
+            }
+        }
+
+        public void CheckForVictory()
+        {
+            if (playerOne.score >= 2)
+            {
+                Console.WriteLine("{0} wins the game!!", playerOne.name);
+                playerOne.winsGame = true;
+            }
+
+            if (playerTwo.score >= 2)
+            {
+                Console.WriteLine("{0} wins the game!!", playerTwo.name);
+                playerTwo.winsGame = true;
+            }
         }
     }
 }

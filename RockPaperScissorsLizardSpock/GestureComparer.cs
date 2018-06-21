@@ -6,18 +6,15 @@ using System.Threading.Tasks;
 
 namespace RockPaperScissorsLizardSpock
 {
-    class GestureComparer
+    static class GestureComparer
     {
         //variable
 
         //constructor
-        public GestureComparer()
-        {
-
-        }
+        
 
         //methods
-        public int DetermineVictor(Gesture gestureOne, Gesture gestureTwo)
+        public static int DetermineVictor(Gesture gestureOne, Gesture gestureTwo)
         {
             int playerOneScore;              //This will be set to 1 if player one wins, -1 if player one loses and 0 if there's a tie.
 
