@@ -24,7 +24,7 @@ namespace RockPaperScissorsLizardSpock
             }
             else
             {
-                //playerTwo is AI
+                playerTwo = new ComputerPlayer();
             }
         }
 
@@ -56,6 +56,7 @@ namespace RockPaperScissorsLizardSpock
                 }
                 else
                 {
+                    Console.WriteLine("The round was a tie!");
                     tieCounter++;
                 }
 

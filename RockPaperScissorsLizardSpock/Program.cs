@@ -10,7 +10,7 @@ namespace RockPaperScissorsLizardSpock
     {
         static void Main(string[] args)
         {
-            GameSystem game = new GameSystem(true);
+            GameSystem game = new GameSystem(false);
 
             game.RunGame();
         }
