@@ -71,7 +71,7 @@ namespace RockPaperScissorsLizardSpock
                     playerTwoWins = true;
                 }
             }
-            Console.ReadLine();
+            Console.ReadLine();         //Just here to pause the console so the player can read
         }
     }
 }

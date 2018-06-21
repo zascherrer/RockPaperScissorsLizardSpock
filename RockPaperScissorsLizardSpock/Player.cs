@@ -10,11 +10,18 @@ namespace RockPaperScissorsLizardSpock
     {
         //variables
         public string name;
+        public List<Gesture> gesturesAvailable;
 
         //constructor
         public Player()
         {
             name = "Default_Name";
+            gesturesAvailable = new List<Gesture>();
+            gesturesAvailable.Add(new Rock());
+            gesturesAvailable.Add(new Paper());
+            gesturesAvailable.Add(new Scissors());
+            gesturesAvailable.Add(new Lizard());
+            gesturesAvailable.Add(new Spock());
         }
 
         //methods
