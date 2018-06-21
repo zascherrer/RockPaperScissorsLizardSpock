@@ -10,7 +10,10 @@ namespace RockPaperScissorsLizardSpock
     {
         static void Main(string[] args)
         {
-            GameSystem game = new GameSystem(false);
+            GameModeSelector mode = new GameModeSelector();
+            bool willPlayAgainstFriend = mode.SelectMode();
+
+            GameSystem game = new GameSystem(willPlayAgainstFriend);
 
             game.RunGame();
         }

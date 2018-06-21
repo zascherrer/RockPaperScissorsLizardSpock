@@ -12,14 +12,19 @@ namespace RockPaperScissorsLizardSpock
         GestureComparer gestureComparer;
         Player playerOne;
         Player playerTwo;
+        bool playerTwoIsHuman;
 
         //constructor
         public GameSystem(bool playerTwoIsHuman)
         {
+            this.playerTwoIsHuman = playerTwoIsHuman;
+
             gestureComparer = new GestureComparer();
+            Console.WriteLine("\n\nPlayer One,");
             playerOne = new HumanPlayer();
             if (playerTwoIsHuman)
             {
+                Console.WriteLine("\n\nPlayer Two,");
                 playerTwo = new HumanPlayer();
             }
             else
@@ -40,23 +45,31 @@ namespace RockPaperScissorsLizardSpock
             while(!playerOneWins && !playerTwoWins)
             {
                 Gesture playerOneChoice = playerOne.PlayerTurn();
+                if (playerTwoIsHuman)
+                {
+                    Console.Clear();
+                }
                 Gesture playerTwoChoice = playerTwo.PlayerTurn();
+                if (playerTwoIsHuman)
+                {
+                    Console.Clear();
+                }
 
                 int resultOfRound = gestureComparer.DetermineVictor(playerOneChoice, playerTwoChoice);
 
                 if(resultOfRound == 1)
                 {
-                    Console.WriteLine("Player one wins the round!");
+                    Console.WriteLine("Player one wins the round!\n\n");
                     playerOneWinCounter++;
                 }
                 else if(resultOfRound == -1)
                 {
-                    Console.WriteLine("Player two wins the round!");
+                    Console.WriteLine("Player two wins the round!\n\n");
                     playerTwoWinCounter++;
                 }
                 else
                 {
-                    Console.WriteLine("The round was a tie!");
+                    Console.WriteLine("The round was a tie!\n\n");
                     tieCounter++;
                 }
 

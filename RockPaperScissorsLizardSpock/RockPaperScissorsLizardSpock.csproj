@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComputerPlayer.cs" />
+    <Compile Include="GameModeSelector.cs" />
     <Compile Include="GameSystem.cs" />
     <Compile Include="Gesture.cs" />
     <Compile Include="GestureComparer.cs" />

@@ -23,6 +23,8 @@ namespace RockPaperScissorsLizardSpock
         {
             int randomInt = randomSeed.Next(gesturesAvailable.Count);
             Gesture chosenGesture = gesturesAvailable[randomInt];
+            ValidateGestureChoice(randomInt + 1);                       // The +1 is needed to make the computer's randomInt line up with 
+                                                                        // the human's userInput and allow them to use the same method
 
             return chosenGesture;
         }

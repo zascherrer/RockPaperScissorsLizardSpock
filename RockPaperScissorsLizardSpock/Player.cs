@@ -37,5 +37,29 @@ namespace RockPaperScissorsLizardSpock
             return chosenGesture;
         }
 
+        public bool ValidateGestureChoice(int userInput)
+        {
+            switch (userInput)
+            {
+                case 1:
+                    Console.WriteLine("\n\n{0} chose Rock!\n\n", name);
+                    return true;
+                case 2:
+                    Console.WriteLine("\n\n{0} chose Paper!\n\n", name);
+                    return true;
+                case 3:
+                    Console.WriteLine("\n\n{0} chose Scissors!\n\n", name);
+                    return true;
+                case 4:
+                    Console.WriteLine("\n\n{0} chose Lizard!\n\n", name);
+                    return true;
+                case 5:
+                    Console.WriteLine("\n\n{0} chose Spock!\n\n", name);
+                    return true;
+                default:
+                    Console.WriteLine("\n\nPlease enter a number 1-5.\n\n");
+                    return false;
+            }
+        }
     }
 }
